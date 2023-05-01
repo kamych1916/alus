@@ -1,0 +1,85 @@
+@mixin less-than($value) {
+  $breakpoint: 0;
+  @if $value == XL {
+    $breakpoint: $BREAKPOINT_LG;
+  }
+  @if $value == LG {
+    $breakpoint: $BREAKPOINT_MD;
+  }
+  @if $value == MD {
+    $breakpoint: $BREAKPOINT_SM;
+  }
+  @if $value == SM {
+    $breakpoint: $BREAKPOINT_XS;
+  }
+
+  @if $value == mobile {
+    $breakpoint: $BREAKPOINT_SM;
+  }
+  @if $value == tablet {
+    $breakpoint: $BREAKPOINT_MD;
+  }
+  @if $value == laptop {
+    $breakpoint: $BREAKPOINT_LAPTOP;
+  }
+  @if $value == laptop_l {
+    $breakpoint: $BREAKPOINT_LAPTOP_L;
+  }
+  @if $value == laptop_xl {
+    $breakpoint: $BREAKPOINT_LAPTOP_XL;
+  }
+
+  @if $value == static {
+    $breakpoint: $BREAKPOINT_LG;
+  }
+  @if $value == fluid {
+    $breakpoint: $BREAKPOINT_SM;
+  }
+
+  @media screen and (max-width: $breakpoint - 1px) {
+    @content;
+  }
+}
+
+@mixin more-than($value) {
+  $breakpoint: 0;
+  @if $value == LG {
+    $breakpoint: $BREAKPOINT_LG;
+  }
+  @if $value == MD {
+    $breakpoint: $BREAKPOINT_MD;
+  }
+  @if $value == SM {
+    $breakpoint: $BREAKPOINT_SM;
+  }
+  @if $value == XS {
+    $breakpoint: $BREAKPOINT_XS;
+  }
+
+  @if $value == mobile {
+    $breakpoint: $BREAKPOINT_SM;
+  }
+  @if $value == tablet {
+    $breakpoint: $BREAKPOINT_MD;
+  }
+  @if $value == laptop {
+    $breakpoint: $BREAKPOINT_LAPTOP;
+  }
+  @if $value == laptop_l {
+    $breakpoint: $BREAKPOINT_LAPTOP_L;
+  }
+  @if $value == laptop_xl {
+    $breakpoint: $BREAKPOINT_LAPTOP_XL;
+  }
+
+  @if $value == fluid {
+    $breakpoint: $BREAKPOINT_LG;
+  }
+  @if $value == nogrid {
+    $breakpoint: $BREAKPOINT_SM;
+  }
+
+  @media screen and (min-width: $breakpoint - 1px) {
+    @content;
+  }
+}
