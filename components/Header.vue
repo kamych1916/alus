@@ -1,8 +1,10 @@
 <template>
   <header class="header section">
     <div class="header-wrapper">
-      <img src="/logo.svg" alt="" />
-      <p> Report 28.02.2023 - 28.03.2023 </p>
+      <div class="header-img">
+        <img src="/logo.svg" alt="" />
+      </div>
+      <p>Report 28.02.2023 - 28.03.2023</p>
     </div>
   </header>
 </template>
@@ -17,18 +19,31 @@ export default {};
   border-bottom: 1px solid #ffffff;
   margin-top: 30px;
   @include less-than(laptop) {
-    margin-top: 20px;
+    margin-top: 0px;
     padding: 20px 0;
+    border: 0;
   }
 
   &-wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-  img{
     @include less-than(laptop) {
-      width: 20%;
+      flex-direction: column;
+    }
+  }
+  &-img {
+    @include less-than(laptop) {
+      width: 100%;
+      border-bottom: 1px solid #ffffff;
+      display: flex;
+      justify-content: center;
+      padding-bottom: 14px;
+    }
+  }
+  img {
+    @include less-than(laptop) {
+      width: 80px;
     }
   }
   p {
@@ -37,8 +52,8 @@ export default {};
     letter-spacing: -0.02em;
     color: #ffffff;
     @include less-than(laptop) {
-      font-size: 16px;
-      padding-top: 6px;
+      font-size: 12px;
+      padding-top: 14px;
     }
   }
 }

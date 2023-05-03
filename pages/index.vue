@@ -1,13 +1,14 @@
 <template>
   <div class="main">
     <img src="/light.svg" class="main-light" />
+    <img src="/light-mobile.svg" class="main-light--mobile" />
     <h1>Hi, Yana Stepanova!</h1>
     <h2>Here’s an overview of your LinkedIn growth this month</h2>
 
     <div class="main-sections">
-      <div>
+      <div class="main-box">
         <div class="main-header">Personal profile</div>
-        <div>
+        <div class="main-block__wrapper">
           <div class="main-block">
             <div class="main-block__top">
               <p>Added friends:</p>
@@ -61,7 +62,7 @@
         </div>
       </div>
 
-      <div>
+      <div class="main-box">
         <div class="main-header main-header--result">Campaign results</div>
         <div class="main-compaign">
           <div class="main-citem">
@@ -148,7 +149,7 @@
         </div>
       </div>
 
-      <div>
+      <div class="main-box">
         <div class="main-header">Company profile</div>
         <div class="main-company">
           <div class="main-company__wrapper">
@@ -234,12 +235,28 @@ export default {};
 .main {
   padding: 30px 0;
   margin-top: auto;
-  &-light {
+
+  @include less-than(laptop) {
+    margin-top: 0px;
+    padding-top: 0;
+  }
+  &-light,
+  &-light--mobile {
     position: absolute;
     top: 0;
     right: 0;
     left: 0;
     z-index: -1;
+    @include less-than(laptop) {
+      display: none;
+    }
+  }
+  &-light--mobile {
+    display: none;
+    @include less-than(laptop) {
+      display: block;
+      width: 100%;
+    }
   }
 
   h1 {
@@ -253,6 +270,7 @@ export default {};
     @include less-than(laptop) {
       margin-bottom: 14px;
       font-size: 26px;
+      text-align: center;
     }
   }
 
@@ -264,7 +282,9 @@ export default {};
     letter-spacing: -0.02em;
     color: #ffffff;
     @include less-than(laptop) {
-      font-size: 18px;
+      padding: 0 50px;
+      font-size: 14px;
+      text-align: center;
     }
   }
 
@@ -273,6 +293,18 @@ export default {};
     grid-template-columns: 1fr 2.5fr 2fr;
     grid-gap: 22px;
     margin-top: 50px;
+    @include less-than(laptop) {
+      margin-top: 20px;
+      display: block;
+    }
+  }
+  &-box {
+    width: 100%;
+    @include less-than(laptop) {
+      margin-bottom: 20px;
+      overflow: auto;
+      white-space: nowrap;
+    }
   }
 
   &-header {
@@ -293,6 +325,14 @@ export default {};
     background: #d9d9d9;
   }
 
+  &-block__wrapper {
+    @include less-than(laptop) {
+      overflow: auto;
+      white-space: nowrap;
+      display: flex;
+      padding-bottom: 10px;
+    }
+  }
   &-block {
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 12px;
@@ -313,6 +353,13 @@ export default {};
         rgba(255, 255, 255, 0.5) -23.59%,
         rgba(255, 255, 255, 0) 100.16%
       );
+    }
+    @include less-than(laptop) {
+      min-width: 250px;
+      margin-right: 10px !important;
+      &:nth-last-child(1) {
+        margin-right: 0px !important;
+      }
     }
   }
   &-block__top,
@@ -365,11 +412,22 @@ export default {};
   }
 
   &-company {
+    @include less-than(laptop) {
+      overflow: auto;
+      white-space: nowrap;
+      display: flex;
+      padding-bottom: 10px;
+    }
   }
-
   &-company__wrapper {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    @include less-than(laptop) {
+      margin-right: 10px;
+      &:nth-last-child(1) {
+        margin-right: 0px;
+      }
+    }
     .main-block {
       margin: 0 2.5px;
       margin-top: 0px;
@@ -397,31 +455,75 @@ export default {};
         rgba(168, 168, 168, 0) 104.16%
       );
     }
+    @include less-than(laptop) {
+      border: none;
+      padding: 0;
+      border-radius: 0;
+      display: flex;
+      overflow: auto;
+      white-space: nowrap;
+      padding-bottom: 20px;
+      &::after {
+        background: none;
+      }
+    }
   }
-
   &-citem {
     border-bottom: 1px solid $lime;
     padding: 16px 0;
+    position: relative;
     &:nth-last-child(1) {
       border-bottom: none;
       padding-bottom: 0px;
     }
+    @include less-than(laptop) {
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      padding: 10px 16px;
+      margin-right: 10px !important;
+      min-width: 400px;
+      &::after {
+        content: " ";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: 11px;
+        background: linear-gradient(
+          111.48deg,
+          rgba(255, 255, 255, 0.5) -23.59%,
+          rgba(168, 168, 168, 0) 104.16%
+        );
+      }
+      &:nth-last-child(1) {
+        margin-right: 0px !important;
+      }
+    }
   }
-
   &-citem__header {
     color: $lime;
     margin-bottom: 10px;
+    @include less-than(laptop) {
+      margin-bottom: 5px;
+    }
   }
-
   &-citem__top {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
+    @include less-than(laptop) {
+      border-bottom: 1px solid #fff;
+      padding-bottom: 5px;
+    }
     p {
       font-size: 20px;
       line-height: 125.7%;
       letter-spacing: -0.02em;
       color: #ffffff;
+      @include less-than(laptop) {
+        font-size: 18px;
+      }
     }
   }
   &-citem__bottom {
