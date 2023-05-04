@@ -311,13 +311,13 @@ export default {};
     background: $lime;
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 12px;
-    color: #000;
+    color: #404040;
     text-align: center;
     padding: 5px;
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 30px;
     p {
-      color: #000;
+      color: #404040;
     }
   }
 
@@ -336,7 +336,7 @@ export default {};
   &-block {
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 12px;
-    padding: 10px;
+    padding: 14px;
     margin: 5px 0;
     box-sizing: border-box;
     position: relative;
@@ -441,6 +441,8 @@ export default {};
     padding: 10px 16px;
     box-sizing: border-box;
     position: relative;
+    max-height: 100%;
+    overflow: auto;
     &::after {
       content: " ";
       width: 100%;
@@ -462,7 +464,7 @@ export default {};
       display: flex;
       overflow: auto;
       white-space: nowrap;
-      padding-bottom: 20px;
+      padding-bottom: 14px;
       &::after {
         background: none;
       }
