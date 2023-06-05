@@ -125,6 +125,13 @@ select {
   border-radius: 10px;
 }
 
+.flicking-pagination {
+  bottom: 0 !important;
+}
+.flicking-pagination-bullet-active {
+  background-color: #ffffff !important;
+}
+
 // .section,
 // header,
 // footer {

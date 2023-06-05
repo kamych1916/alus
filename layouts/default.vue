@@ -1,9 +1,5 @@
 <template>
-  <div class="wrapper">
-    <Header />
-    <Nuxt />
-    <Footer />
-  </div>
+  <Nuxt />
 </template>
 
 <style lang="scss">

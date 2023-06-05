@@ -1,237 +1,425 @@
 <template>
-  <div class="main">
-    <img src="/light.svg" class="main-light" />
-    <img src="/light-mobile.svg" class="main-light--mobile" />
-    <h1>Hi, Yana Stepanova!</h1>
-    <h2>Here’s an overview of your LinkedIn growth this month</h2>
-
-    <div class="main-sections">
-      <div class="main-box">
-        <div class="main-header">Personal profile</div>
-        <div class="main-block__wrapper">
-          <div class="main-block">
-            <div class="main-block__top">
-              <p>Added friends:</p>
-              <span>+1,000%</span>
-            </div>
-            <div class="main-block__bottom">
-              <p>100</p>
-              <span>Previous result: 10 </span>
-            </div>
+  <div class="wrapper">
+    <div v-if="response">
+      <header class="header section">
+        <div class="header-wrapper">
+          <div class="header-img">
+            <img src="/logo.svg" alt="" />
           </div>
-          <div class="main-block">
-            <div class="main-block__top">
-              <p>New followers:</p>
-              <span>+1,080%</span>
-            </div>
-            <div class="main-block__bottom">
-              <p>110</p>
-              <span>Previous result: 8 </span>
-            </div>
-          </div>
-          <div class="main-block">
-            <div class="main-block__top">
-              <p>Profile views:</p>
-              <span>+837,5%</span>
-            </div>
-            <div class="main-block__bottom">
-              <p>75</p>
-              <span>Previous result: 8 </span>
-            </div>
-          </div>
-          <div class="main-block">
-            <div class="main-block__top">
-              <p>Engaging with posts:</p>
-              <span>+5,675%</span>
-            </div>
-            <div class="main-block__bottom">
-              <p>231</p>
-              <span>Previous result: 4 </span>
-            </div>
-          </div>
-          <div class="main-block">
-            <div class="main-block__top">
-              <p>Search appearances:</p>
-              <span>+200%</span>
-            </div>
-            <div class="main-block__bottom">
-              <p>3</p>
-              <span>Previous result: 1 </span>
-            </div>
-          </div>
+          <p>{{ response.date }}</p>
         </div>
-      </div>
+      </header>
+      <div class="main">
+        <img src="/light.svg" class="main-light" />
+        <img src="/light-mobile.svg" class="main-light--mobile" />
+        <h1>Hi, {{ response.name }}!</h1>
+        <h2>Here’s an overview of your LinkedIn growth this month</h2>
 
-      <div class="main-box">
-        <div class="main-header main-header--result">Campaign results</div>
-        <div class="main-compaign">
-          <div class="main-citem">
-            <div class="main-citem__header">Campaign №1</div>
-            <div class="main-citem__top">
-              <p>Invite to friends</p>
-              <span>15.03 - 17.03</span>
-            </div>
-            <div class="main-citem__bottom">
-              <div>
-                <p>Sent:</p>
-                <span>85 </span>
-              </div>
-              <div class="main-citem__bottom--border">
-                <div class="main-citem__bottom--flex">
-                  <div>Accepted:</div>
-                  <p>21.1%</p>
+        <div class="main-sections">
+          <div class="main-box">
+            <div class="main-header">Personal profile</div>
+            <div class="main-block__wrapper">
+              <div class="main-block">
+                <div class="main-block__top">
+                  <p>Added friends:</p>
+                  <span>{{
+                    response.personal_profile.add_friends.percent
+                  }}</span>
                 </div>
-                <span>18 </span>
-              </div>
-              <div>
-                <div class="main-citem__bottom--flex">
-                  <div>Replied:</div>
-                  <p>21.1%</p>
+                <div class="main-block__bottom">
+                  <p>{{ response.personal_profile.add_friends.total }}</p>
+                  <span
+                    >Previous result:
+                    {{ response.personal_profile.add_friends.previous }}
+                  </span>
                 </div>
-                <span>19</span>
               </div>
-            </div>
-          </div>
-          <div class="main-citem">
-            <div class="main-citem__header">Campaign №2</div>
-            <div class="main-citem__top">
-              <p>Dubai Corp HR</p>
-              <span>23.03 - 02.04</span>
-            </div>
-            <div class="main-citem__bottom">
-              <div>
-                <p>Sent:</p>
-                <span>290 </span>
-              </div>
-              <div class="main-citem__bottom--border">
-                <div class="main-citem__bottom--flex">
-                  <div>Accepted:</div>
-                  <p>20%</p>
+              <div class="main-block">
+                <div class="main-block__top">
+                  <p>New followers:</p>
+                  <span>{{
+                    response.personal_profile.new_followers.percent
+                  }}</span>
                 </div>
-                <span>58 </span>
-              </div>
-              <div>
-                <div class="main-citem__bottom--flex">
-                  <div>Replied::</div>
-                  <p>3.1%</p>
+                <div class="main-block__bottom">
+                  <p>{{ response.personal_profile.new_followers.total }}</p>
+                  <span
+                    >Previous result:
+                    {{ response.personal_profile.new_followers.previous }}
+                  </span>
                 </div>
-                <span>9 </span>
               </div>
-            </div>
-          </div>
-          <div class="main-citem">
-            <div class="main-citem__header">Campaign №3</div>
-            <div class="main-citem__top">
-              <p>Dubai Top-managers</p>
-              <span>23.03 - 02.04</span>
-            </div>
-            <div class="main-citem__bottom">
-              <div>
-                <p>Sent:</p>
-                <span>6 </span>
-              </div>
-              <div class="main-citem__bottom--border">
-                <div class="main-citem__bottom--flex">
-                  <div>Accepted:</div>
-                  <p>50%</p>
+              <div class="main-block">
+                <div class="main-block__top">
+                  <p>Profile views:</p>
+                  <span>{{
+                    response.personal_profile.profile_views.percent
+                  }}</span>
                 </div>
-                <span>3 </span>
-              </div>
-              <div>
-                <div class="main-citem__bottom--flex">
-                  <div>Replied::</div>
-                  <p>0%</p>
+                <div class="main-block__bottom">
+                  <p>{{ response.personal_profile.profile_views.total }}</p>
+                  <span
+                    >Previous result:
+                    {{ response.personal_profile.profile_views.previous }}
+                  </span>
                 </div>
-                <span>0 </span>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="main-box">
-        <div class="main-header">Company profile</div>
-        <div class="main-company">
-          <div class="main-company__wrapper">
-            <div class="main-block">
-              <div class="main-block__top">
-                <p>New followers:</p>
-                <span></span>
+              <div class="main-block">
+                <div class="main-block__top">
+                  <p>Engaging with posts:</p>
+                  <span>
+                    {{ response.personal_profile.engaging_with_posts.percent }}
+                  </span>
+                </div>
+                <div class="main-block__bottom">
+                  <p>
+                    {{ response.personal_profile.engaging_with_posts.total }}
+                  </p>
+                  <span>
+                    Previous result:
+                    {{ response.personal_profile.engaging_with_posts.previous }}
+                  </span>
+                </div>
               </div>
-              <div class="main-block__bottom">
-                <p>3</p>
-                <span>Previous result: 0 </span>
-              </div>
-            </div>
-            <div class="main-block">
-              <div class="main-block__top">
-                <p>Unique visitors:</p>
-                <span>+600%</span>
-              </div>
-              <div class="main-block__bottom">
-                <p>6</p>
-                <span>Previous result: 1 </span>
+              <div class="main-block">
+                <div class="main-block__top">
+                  <p>Search appearances:</p>
+                  <span>
+                    {{ response.personal_profile.search_appearances.percent }}
+                  </span>
+                </div>
+                <div class="main-block__bottom">
+                  <p>
+                    {{ response.personal_profile.search_appearances.total }}
+                  </p>
+                  <span>
+                    Previous result:
+                    {{ response.personal_profile.search_appearances.previous }}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="main-company__wrapper">
-            <div class="main-block">
-              <div class="main-block__top">
-                <p>Search appearances:</p>
-                <span>+5,100%</span>
+          <div class="main-box">
+            <div class="main-header main-header--result">Campaign results</div>
+            <div class="main-compaign">
+              <div
+                class="main-citem"
+                v-for="(item, id) in response.campaign_results"
+                :key="id"
+              >
+                <div class="main-citem__header">Campaign №{{ id + 1 }}</div>
+                <div class="main-citem__top">
+                  <p>{{ item.title }}</p>
+                  <span>{{ item.date }}</span>
+                </div>
+                <div class="main-citem__bottom">
+                  <div>
+                    <p>Sent:</p>
+                    <span>{{ item.sent }} </span>
+                  </div>
+                  <div class="main-citem__bottom--border">
+                    <div class="main-citem__bottom--flex">
+                      <div>Accepted:</div>
+                      <p>{{ item.accepted.percent }}</p>
+                    </div>
+                    <span>{{ item.accepted.total }} </span>
+                  </div>
+                  <div>
+                    <div class="main-citem__bottom--flex">
+                      <div>Replied:</div>
+                      <p>{{ item.replied.percent }}</p>
+                    </div>
+                    <span>{{ item.replied.total }}</span>
+                  </div>
+                </div>
               </div>
-              <div class="main-block__bottom">
-                <p>2.1k</p>
-                <span>Previous result: 200 </span>
+
+              <!-- <div class="main-citem">
+              <div class="main-citem__header">Campaign №2</div>
+              <div class="main-citem__top">
+                <p>Dubai Corp HR</p>
+                <span>23.03 - 02.04</span>
+              </div>
+              <div class="main-citem__bottom">
+                <div>
+                  <p>Sent:</p>
+                  <span>290 </span>
+                </div>
+                <div class="main-citem__bottom--border">
+                  <div class="main-citem__bottom--flex">
+                    <div>Accepted:</div>
+                    <p>20%</p>
+                  </div>
+                  <span>58 </span>
+                </div>
+                <div>
+                  <div class="main-citem__bottom--flex">
+                    <div>Replied::</div>
+                    <p>3.1%</p>
+                  </div>
+                  <span>9 </span>
+                </div>
               </div>
             </div>
-            <div class="main-block">
-              <div class="main-block__top">
-                <p>Post impressions:</p>
-                <span>+5,100%</span>
+            <div class="main-citem">
+              <div class="main-citem__header">Campaign №3</div>
+              <div class="main-citem__top">
+                <p>Dubai Top-managers</p>
+                <span>23.03 - 02.04</span>
               </div>
-              <div class="main-block__bottom">
-                <p>913</p>
-                <span>Previous result: 30 </span>
+              <div class="main-citem__bottom">
+                <div>
+                  <p>Sent:</p>
+                  <span>6 </span>
+                </div>
+                <div class="main-citem__bottom--border">
+                  <div class="main-citem__bottom--flex">
+                    <div>Accepted:</div>
+                    <p>50%</p>
+                  </div>
+                  <span>3 </span>
+                </div>
+                <div>
+                  <div class="main-citem__bottom--flex">
+                    <div>Replied::</div>
+                    <p>0%</p>
+                  </div>
+                  <span>0 </span>
+                </div>
               </div>
+            </div> -->
             </div>
           </div>
 
-          <div class="main-company__wrapper">
-            <div class="main-block">
-              <div class="main-block__top">
-                <p>Custom button clicks:</p>
-                <span>+5,100%</span>
+          <div class="main-box">
+            <div class="main-header">Company profile</div>
+            <div class="main-company">
+              <div class="main-company__wrapper">
+                <div class="main-block">
+                  <div class="main-block__top">
+                    <p>New followers:</p>
+                    <span>
+                      {{ response.company_profile.new_followers.percent }}
+                    </span>
+                  </div>
+                  <div class="main-block__bottom">
+                    <p>{{ response.company_profile.new_followers.total }}</p>
+                    <span>
+                      Previous result:
+                      {{
+                        response.company_profile.new_followers.previous_result
+                      }}
+                    </span>
+                  </div>
+                </div>
+                <div class="main-block">
+                  <div class="main-block__top">
+                    <p>Unique visitors:</p>
+                    <span>
+                      {{ response.company_profile.unique_visitors.percent }}
+                    </span>
+                  </div>
+                  <div class="main-block__bottom">
+                    <p>
+                      {{ response.company_profile.unique_visitors.total }}
+                    </p>
+                    <span>
+                      Previous result:
+                      {{
+                        response.company_profile.unique_visitors.previous_result
+                      }}
+                    </span>
+                  </div>
+                </div>
               </div>
-              <div class="main-block__bottom">
-                <p>52</p>
-                <span>Previous result: 1 </span>
-              </div>
-            </div>
 
-            <div class="main-block">
-              <div class="main-block__top">
-                <p>New leads:</p>
-                <span>+5,100%</span>
+              <div class="main-company__wrapper">
+                <div class="main-block">
+                  <div class="main-block__top">
+                    <p>Search appearances:</p>
+                    <span>
+                      {{ response.company_profile.search_appearances.percent }}
+                    </span>
+                  </div>
+                  <div class="main-block__bottom">
+                    <p>
+                      {{ response.company_profile.search_appearances.total }}
+                    </p>
+                    <span>
+                      Previous result:
+                      {{
+                        response.company_profile.search_appearances
+                          .previous_result
+                      }}
+                    </span>
+                  </div>
+                </div>
+                <div class="main-block">
+                  <div class="main-block__top">
+                    <p>Post impressions:</p>
+                    <span>
+                      {{ response.company_profile.post_impressions.percent }}
+                    </span>
+                  </div>
+                  <div class="main-block__bottom">
+                    <p>
+                      {{ response.company_profile.post_impressions.total }}
+                    </p>
+                    <span>
+                      Previous result:
+                      {{
+                        response.company_profile.post_impressions
+                          .previous_result
+                      }}
+                    </span>
+                  </div>
+                </div>
               </div>
-              <div class="main-block__bottom">
-                <p>52</p>
-                <span>Previous result: 1 </span>
+
+              <div class="main-company__wrapper">
+                <div class="main-block">
+                  <div class="main-block__top">
+                    <p>Custom button clicks:</p>
+                    <span>
+                      {{
+                        response.company_profile.custom_button_clicks.percent
+                      }}
+                    </span>
+                  </div>
+                  <div class="main-block__bottom">
+                    <p>
+                      {{ response.company_profile.custom_button_clicks.total }}
+                    </p>
+                    <span>
+                      Previous result:
+                      {{
+                        response.company_profile.custom_button_clicks
+                          .previous_result
+                      }}
+                    </span>
+                  </div>
+                </div>
+
+                <div class="main-block">
+                  <div class="main-block__top">
+                    <p>New leads:</p>
+                    <span>
+                      {{ response.company_profile.new_leads.percent }}
+                    </span>
+                  </div>
+                  <div class="main-block__bottom">
+                    <p>
+                      {{ response.company_profile.new_leads.total }}
+                    </p>
+                    <span>
+                      Previous result:
+                      {{ response.company_profile.new_leads.previous_result }}
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div
+      v-else
+      style="display: flex; justify-content: center; margin-top: auto"
+    >
+      <img src="/loading-2.svg" />
+    </div>
+    <Footer />
   </div>
 </template>
 
 <script>
-export default {};
+import simplebar from "simplebar-vue";
+import "simplebar-vue/dist/simplebar.min.css";
+
+export default {
+  components: {
+    simplebar,
+  },
+  async asyncData({ route, $axios }) {
+    try {
+      const response = await $axios.$get(
+        `http://bot.midera.fun:8000/report?name=${route.query.name}`
+      );
+      return { response };
+    } catch (error) {
+      return { response: false };
+    }
+  },
+  data() {
+    return {
+      horizontal: false,
+      plugins: [],
+      options: {
+        horizontal: false,
+        align: "prev",
+      },
+    };
+  },
+
+  mounted() {
+    if (this.response) {
+      document.querySelector("html").style.height = "auto";
+      document.querySelector("body").style.height = "auto";
+    } else {
+      document.querySelector("body").style.height = "100%";
+      document.querySelector("html").style.height = "100%";
+    }
+  },
+};
 </script>
 
 <style lang="scss" scoped>
+.header {
+  padding: 20px 0;
+  border-bottom: 1px solid #ffffff;
+  margin-top: 30px;
+  @include less-than(laptop) {
+    margin-top: 0px;
+    padding: 20px 0;
+    border: 0;
+  }
+
+  &-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include less-than(laptop) {
+      flex-direction: column;
+    }
+  }
+  &-img {
+    @include less-than(laptop) {
+      width: 100%;
+      border-bottom: 1px solid #ffffff;
+      display: flex;
+      justify-content: center;
+      padding-bottom: 14px;
+    }
+  }
+  img {
+    @include less-than(laptop) {
+      width: 80px;
+    }
+  }
+  p {
+    font-size: 20px;
+    line-height: 109.2%;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    @include less-than(laptop) {
+      font-size: 12px;
+      padding-top: 14px;
+    }
+  }
+}
 .main {
   padding: 30px 0;
   margin-top: auto;
@@ -330,7 +518,7 @@ export default {};
       overflow: auto;
       white-space: nowrap;
       display: flex;
-      padding-bottom: 10px;
+      padding-bottom: 14px;
     }
   }
   &-block {
@@ -355,7 +543,7 @@ export default {};
       );
     }
     @include less-than(laptop) {
-      min-width: 250px;
+      // min-width: 350px;
       margin-right: 10px !important;
       &:nth-last-child(1) {
         margin-right: 0px !important;

@@ -28,19 +28,19 @@ export default {
         content: "Alus",
       },
       {
+        name: "keywords",
+        content: "Alus",
+      },
+      {
+        hid: "og:image",
+        name: "og:image",
+        content: "https://bot.alus.us/SEO_Inst_+_Fb.png",
+      },
+      {
         hid: "og:description",
         name: "og:description",
         content: "Alus",
       },
-      {
-        name: "keywords",
-        content: "Alus",
-      },
-      // {
-      //   hid: "og:image",
-      //   name: "og:image",
-      //   content: "https://amina-osimi.com/amina-photo.jpg",
-      // },
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
@@ -81,14 +81,14 @@ export default {
     },
   },
 
-  pageTransition: "page-transition",
-  router: {
-    scrollBehavior() {
-      return { top: 0 };
-    },
-  },
-
-  // axios: {
-  //   baseURL: "http://stroicenter.mirllex.com",
+  // pageTransition: "page-transition",
+  // router: {
+  //   scrollBehavior() {
+  //     return { top: 0 };
+  //   },
   // },
+
+  axios: {
+    baseURL: "http://bot.midera.fun:8000",
+  },
 };
